@@ -14,6 +14,10 @@ const spotifyReducer = (state = defaultState, action) => {
             const images = state.images.concat(action.images)
             return {...state, images}
         }
+        case types.updateFavorites: {
+            const images = state.images.map((image, index) => index === action.index ? {...image, isfamily: !image.isfamily}: image);
+            return {...state, images}
+        }
         default: {
             return state
         }

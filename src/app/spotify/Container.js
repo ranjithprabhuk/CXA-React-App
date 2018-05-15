@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { getImages } from './action'
+import { getImages, updateFavorites } from './action'
 import Spotify from './'
 
 const mapStateToProps = (state) => {
@@ -13,6 +13,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         getImages: (pageNo, imagesPerPage) => dispatch(getImages(pageNo, imagesPerPage)),
+        updateFavorites:(index) => dispatch(updateFavorites(index)),
     }
 }
 

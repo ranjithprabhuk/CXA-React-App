@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getImages: () => dispatch(getImages()),
+        getImages: (pageNo, imagesPerPage) => dispatch(getImages(pageNo, imagesPerPage)),
     }
 }
 

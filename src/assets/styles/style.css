@@ -29,11 +29,12 @@ body {
 }
 
 .topRightMenu li {
-  width: 100px;
+  width: auto;
   cursor: pointer;
   text-align: center;
   color : #ffffff;
-  line-height: 60px
+  line-height: 60px;
+  padding: 0px 15px;
 }
 
 .topRightMenu li:hover {

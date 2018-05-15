@@ -12,9 +12,9 @@ class HeaderView extends Component {
     return (
       <div className='header'>
         <ul className = 'topRightMenu'>
-          <li onClick={() => history.push('/')}> Home</li>
-          <li onClick={() => history.push('/about')}> About </li>
-          <li onClick={() => history.push('/postPage')}> Call API </li>
+          <li onClick={() => history.push('/')}> Spotify</li>
+          <li onClick={() => history.push('/carousel')}> Carousel </li>
+          <li onClick={() => history.push('/auto-complete')}> Auto Complete </li>
         </ul>
       </div>
     );

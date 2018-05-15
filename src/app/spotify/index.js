@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
 class Spotify extends Component {
+    componentDidMount() {
+        this.props.getImages();
+    }
   render() {
     return (
       <div>

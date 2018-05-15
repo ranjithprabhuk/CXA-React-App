@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { toggleEnrollmentSuccessModal } from './action'
+import { getImages } from './action'
 import Spotify from './'
 
 const mapStateToProps = (state) => {

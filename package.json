@@ -23,11 +23,12 @@
     "cross-env"
   ],
   "dependencies": {
+    "@material-ui/core": "^1.0.0-rc.0",
+    "@material-ui/icons": "^1.0.0-rc.0",
     "axios": "^0.18.0",
     "history": "^4.7.2",
     "html-webpack-plugin": "^2.30.1",
     "immutable": "^3.8.2",
-    "material-ui": "^0.19.4",
     "path": "^0.12.7",
     "prop-types": "^15.6.0",
     "react": "^16.1.1",

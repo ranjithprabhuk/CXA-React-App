@@ -1,23 +1,17 @@
-import React, { Component } from 'react';  //eslint-disable-line
+import React from 'react';
+import PropTypes from 'prop-types';
 import { history } from '../../redux/store';
+import { withStyles } from '@material-ui/core/styles';
+import { Button, Typography, Toolbar, AppBar } from '@material-ui/core';
 
-class HeaderView extends Component {
-
-  /**
-   * Render Header
-   * @return {JSX} Rendered Header
-   */
-
-  render() {
-    return (
-      <div className='header'>
-        <ul className = 'topRightMenu'>
-          <li onClick={() => history.push('/')}> Spotify</li>
-          <li onClick={() => history.push('/carousel')}> Carousel </li>
-          <li onClick={() => history.push('/auto-complete')}> Auto Complete </li>
-        </ul>
-      </div>
-    );
-  }
-}
-export default HeaderView;
+export const HeaderView = () =>
+  <div>
+    <AppBar color="primary">
+      <Toolbar>
+        <Typography variant="title" color="inherit">
+          CXA - Case Assignment
+        </Typography>
+        <Button color="inherit" onClick={() => history.push('/')}>Spotify</Button>
+      </Toolbar>
+    </AppBar>
+  </div>

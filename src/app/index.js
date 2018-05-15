@@ -3,9 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import HeaderViewContainer from '../components/header/HeaderView';
-import HomeViewContainer from './home/HomeViewContainer';
-import AboutView from './about/AboutView';
-import PostPageViewContainer from './postPage/PostPageViewContainer';
+import SpotifyContainer from './spotify/Container';
 
 class App extends Component {
 
@@ -16,9 +14,7 @@ class App extends Component {
           <main>
             <HeaderViewContainer />
             <Switch>
-              <Route exact path="/spotify" component={HomeViewContainer} />
-              <Route exact path="/about" component={AboutView} />
-              <Route exact path="/postpage" component={PostPageViewContainer} />
+              <Route exact path="/spotify" component={SpotifyContainer} />
               <Redirect from="/" to="spotify" />
             </Switch>
           </main>

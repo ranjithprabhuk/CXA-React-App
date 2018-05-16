@@ -4,6 +4,7 @@ import { Grid, FormControl, InputAdornment, InputLabel, Input, IconButton, Circu
 import FileDownload from '@material-ui/icons/FileDownload';
 import Search from '@material-ui/icons/Search';
 import { ImageContainer } from '../../components/image-container'
+import { downloadCsvFile } from '../../utils'
 import './spotify.scss'
 
 class Spotify extends Component {
@@ -52,6 +53,10 @@ class Spotify extends Component {
     }
   }
 
+  download() {
+    downloadCsvFile(this.props.images, 'imageData')
+  }
+
   renderImages() {
     const { images, updateFavorites } = this.props
 
@@ -94,7 +99,7 @@ class Spotify extends Component {
   renderFooterButtons() {
     return (
       <div className='footer-container'>
-        <Button variant="raised" color="primary">
+        <Button variant="raised" color="primary" onClick={() => this.download()}>
           <FileDownload />Download CSV
           </Button>
       </div>

@@ -8,7 +8,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index_bundle.js',
-    publicPath: '/dist/'
+    publicPath: '/CXA-React-App/dist/'
   },
   module: {
     rules: [

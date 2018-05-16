@@ -61,7 +61,7 @@ class Spotify extends Component {
     const { images, updateFavorites } = this.props
 
     return (
-      <div className="image-container" onScroll={this.handleScroll}>
+      <div className='image-container animated slideInUp' onScroll={this.handleScroll}>
         <ImageContainer images={images} updateFavorites={updateFavorites} />
       </div>
     )
@@ -69,7 +69,7 @@ class Spotify extends Component {
 
   renderSearchBox() {
     return (
-      <Grid container className='search-container'>
+      <Grid container className='animated slideInUp search-container'>
         <Grid item xs={12} sm={10} md={8}>
           <FormControl fullWidth>
             <InputLabel htmlFor="Search">Search</InputLabel>
@@ -98,7 +98,7 @@ class Spotify extends Component {
 
   renderFooterButtons() {
     return (
-      <div className='footer-container'>
+      <div className='animated slideInRight footer-container'>
         <Button variant="raised" color="primary" onClick={() => this.download()}>
           <FileDownload />Download CSV
           </Button>
@@ -112,7 +112,7 @@ class Spotify extends Component {
     return (
       <div className='spotify'>
         {this.renderSearchBox()}
-        {isFetchingImages ? <CircularProgress color="secondary" /> : this.renderImages()}
+        {isFetchingImages ? <CircularProgress className='animated slideInUp' color="secondary" /> : this.renderImages()}
         {this.renderFooterButtons()}
       </div>
     );

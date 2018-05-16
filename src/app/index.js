@@ -3,6 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import { HeaderView } from '../components/header/HeaderView';
 import SpotifyContainer from './spotify/Container';
 import CarouselContainer from './carousel/Container';
+import 'animate.css/animate.min.css'
 
 class App extends Component {
 

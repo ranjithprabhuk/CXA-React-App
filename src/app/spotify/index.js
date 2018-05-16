@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Paper, Card, CardContent, CardMedia, CardActions, IconButton, Typography, FormControl, InputAdornment, InputLabel, Input, CircularProgress } from '@material-ui/core';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import RemoveRedEye from '@material-ui/icons/RemoveRedEye';
-import ShareIcon from '@material-ui/icons/Share';
+import { Grid, FormControl, InputAdornment, InputLabel, Input, IconButton, CircularProgress, Button } from '@material-ui/core';
+import FileDownload from '@material-ui/icons/FileDownload';
 import Search from '@material-ui/icons/Search';
-import { constructImageSource } from '../../utils';
 import { ImageContainer } from '../../components/image-container'
 import './spotify.scss'
 
@@ -65,6 +62,16 @@ class Spotify extends Component {
     )
   }
 
+  renderFooterButtons() {
+    return (
+      <div className='footer-container'>
+        <Button variant="raised" color="primary">
+          <FileDownload />Download CSV
+          </Button>
+      </div>
+    )
+  }
+
   render() {
     const { images, updateFavorites, isFetchingImages } = this.props
 
@@ -95,7 +102,7 @@ class Spotify extends Component {
           </Grid>
         </Grid>
         {isFetchingImages ? <CircularProgress color="secondary" /> : this.renderImages()}
-
+        {this.renderFooterButtons()}
       </div>
     );
   }

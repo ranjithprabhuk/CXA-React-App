@@ -1,12 +1,18 @@
 .image-container {
     margin-top: 20px;
-    max-height: 70vh;
+    max-height: 65vh;
     overflow-y: scroll;
     box-shadow: 0 -5px 8px -4px #555;
 }
 
 .search-container{
     justify-content: center;
+}
+
+.footer-container {
+    position: fixed;
+    bottom: 8px;
+    right: 8px;
 }
 
 ::-webkit-scrollbar {

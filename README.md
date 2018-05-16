@@ -2,11 +2,6 @@
 
 React application with flicker image loader, Carousel and Auto Complete Inputs box.
 
-## DEMO
-
-   You can see the application in the following url : [CXA-Case Assignment](https://ranjithprabhuk.github.io/CXA-Assignment/dist/)
-
-
 ## Installation
 
 1. A recommended way to install the application is through [npm](https://www.npmjs.com/) package manager using the following command:
@@ -24,7 +19,7 @@ React application with flicker image loader, Carousel and Auto Complete Inputs b
 	```
 
 
-3. Application will accessible in http://localhost:4200/
+3. Application will accessible in http://localhost:8080/
 
 
 ## Documentation

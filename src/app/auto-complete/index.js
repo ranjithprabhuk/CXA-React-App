@@ -15,7 +15,7 @@ const renderSuggestion = (suggestion, { query }) => {
 
   return (
     <span className='suggestion-content'>
-      <span className="name">
+      <span className='name'>
         {
           parts.map((part, index) => {
             const className = part.highlight ? 'highlight' : null;
@@ -81,7 +81,7 @@ class AutoComplete extends Component {
     };
 
     return (
-      <Grid container className='auto-complete-container'>
+      <Grid container className='auto-complete-container animated zoomInDown'>
         <Grid item xs={12} sm={10} md={8}>
           <Autosuggest
             suggestions={suggestions}
@@ -102,7 +102,7 @@ class AutoComplete extends Component {
     return (
       <div className='auto-complete'>
         {images.length === 0 ?
-          <CircularProgress className='circular-loader' color="primary" /> : this.renderAutoComplete()}
+          <CircularProgress className='circular-loader animated zoomInUp' color="primary" /> : this.renderAutoComplete()}
       </div>
     );
   }

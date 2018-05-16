@@ -35,7 +35,7 @@ class AutoComplete extends Component {
     super()
     this.state = {
       pageNo: 1,
-      imagesPerPage: 20,
+      imagesPerPage: 500,
       value: '',
       suggestions: []
     }
@@ -69,11 +69,7 @@ class AutoComplete extends Component {
   };
 
   componentWillMount() {
-    const { images, getImages } = this.props
-    const { pageNo, imagesPerPage, searchText } = this.state
-    if (images && images.length === 0) {
-      getImages(pageNo, imagesPerPage)
-    }
+      this.props.getImages(this.state.pageNo, this.state.imagesPerPage)
   }
 
   renderAutoComplete() {

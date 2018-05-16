@@ -62,6 +62,35 @@ class Spotify extends Component {
     )
   }
 
+  renderSearchBox() {
+    return (
+      <Grid container className='search-container'>
+        <Grid item xs={12} sm={10} md={8}>
+          <FormControl fullWidth>
+            <InputLabel htmlFor="Search">Search</InputLabel>
+            <Input
+              id='search'
+              type='text'
+              value={this.state.searchText}
+              onChange={(e) => this.handleChange(e)}
+              disabled={this.props.isFetchingImages}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="Search"
+                    onClick={this.searchImages}
+                  >
+                    {<Search />}
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
+          </FormControl>
+        </Grid>
+      </Grid>
+    )
+  }
+
   renderFooterButtons() {
     return (
       <div className='footer-container'>
@@ -76,31 +105,8 @@ class Spotify extends Component {
     const { images, updateFavorites, isFetchingImages } = this.props
 
     return (
-      <div style={{ marginTop: 80 }}>
-        <Grid container className='search-container'>
-          <Grid item xs={12} sm={10} md={8}>
-            <FormControl fullWidth>
-              <InputLabel htmlFor="Search">Search</InputLabel>
-              <Input
-                id='search'
-                type='text'
-                value={this.state.searchText}
-                onChange={(e) => this.handleChange(e)}
-                disabled={this.props.isFetchingImages}
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="Search"
-                      onClick={this.searchImages}
-                    >
-                      {<Search />}
-                    </IconButton>
-                  </InputAdornment>
-                }
-              />
-            </FormControl>
-          </Grid>
-        </Grid>
+      <div className='spotify'>
+        {this.renderSearchBox()}
         {isFetchingImages ? <CircularProgress color="secondary" /> : this.renderImages()}
         {this.renderFooterButtons()}
       </div>

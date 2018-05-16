@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { HeaderView } from '../components/header/HeaderView';
 import SpotifyContainer from './spotify/Container';
+import CarouselContainer from './carousel/Container';
 
 class App extends Component {
 
@@ -12,6 +13,7 @@ class App extends Component {
           <HeaderView />
           <Switch>
             <Route exact path="/spotify" component={SpotifyContainer} />
+            <Route exact path="/carousel" component={CarouselContainer} />
             <Redirect from="/" to="spotify" />
           </Switch>
         </main>

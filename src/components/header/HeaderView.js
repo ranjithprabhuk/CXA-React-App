@@ -11,7 +11,8 @@ export const HeaderView = () =>
         <Typography variant="title" color="inherit">
           CXA - Case Assignment
         </Typography>
-        <Button color="inherit" onClick={() => history.push('/')}>Spotify</Button>
+        <Button color="inherit" onClick={() => history.push('/spotify')}>Spotify</Button>
+        <Button color="inherit" onClick={() => history.push('/carousel')}>Carousel</Button>
       </Toolbar>
     </AppBar>
   </div>

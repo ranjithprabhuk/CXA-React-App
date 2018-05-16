@@ -52,3 +52,12 @@ const ConvertToCSV = (jsonData) => {
   }
   return str;
 }
+
+export const renderTitle = (title) => {
+  let titleContent = 'No Title';
+  if (title) {
+    titleContent = title.length > 10 ? title.slice(0, 10) + '...' : title
+  }
+
+  return titleContent
+}

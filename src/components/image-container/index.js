@@ -3,23 +3,14 @@ import { Grid, Card, CardContent, CardMedia, CardActions, IconButton, Typography
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import RemoveRedEye from '@material-ui/icons/RemoveRedEye';
 import ShareIcon from '@material-ui/icons/Share';
-import { constructImageSource } from '../../utils';
+import { constructImageSource, renderTitle } from '../../utils';
 import './image-container.scss';
-
-const renderTitle = (title) => {
-  let titleContent = 'No Title';
-  if (title) {
-    titleContent = title.length > 10 ? title.slice(0, 10) + '...' : title
-  }
-
-  return titleContent
-}
 
 export const ImageContainer = ({ images, updateFavorites }) => (
   <Grid container>
     {images.map((image, index) =>
       <Grid item xs={12} sm={4} md={3}>
-        <Card className="card">
+        <Card className="card animated fadeIn">
           <CardMedia
             className="media"
             image={constructImageSource(image)}

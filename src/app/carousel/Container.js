@@ -3,8 +3,9 @@ import { getImages } from '../spotify/action'
 import Carousel from './'
 
 const mapStateToProps = (state) => {
+    const { images } = state.spotify
     return {
-        images: state.spotify.images,
+        images,
     }
 }
 

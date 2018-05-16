@@ -59,7 +59,7 @@ class Spotify extends Component {
     const { images, updateFavorites } = this.props
 
     return (
-      <div className="root" onScroll={this.handleScroll}>
+      <div className="image-container" onScroll={this.handleScroll}>
         <ImageContainer images={images} updateFavorites={updateFavorites} />
       </div>
     )
@@ -70,7 +70,7 @@ class Spotify extends Component {
 
     return (
       <div style={{ marginTop: 80 }}>
-        <Grid container>
+        <Grid container className='search-container'>
           <Grid item xs={12} sm={10} md={8}>
             <FormControl fullWidth>
               <InputLabel htmlFor="Search">Search</InputLabel>

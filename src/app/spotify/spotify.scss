@@ -1,19 +1,14 @@
-.root {
-    margin-top: 80px;
+.image-container {
+    margin-top: 20px;
     max-height: 70vh;
     overflow-y: scroll;
+    box-shadow: 0 -5px 8px -4px #555;
 }
 
-.card {
-    margin: 8px;
-    text-align: left;
+.search-container{
+    justify-content: center;
 }
 
-.media {
-    height: 0px;
-    padding-top: 56.25%;
-}
-
-.card-actions {
-    justify-content: space-evenly;
+::-webkit-scrollbar {
+    display: none;
 }

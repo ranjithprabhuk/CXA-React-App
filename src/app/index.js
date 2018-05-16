@@ -3,6 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import { HeaderView } from '../components/header/HeaderView';
 import SpotifyContainer from './spotify/Container';
 import CarouselContainer from './carousel/Container';
+import AutoCompleteContainer from './auto-complete/Container';
 import 'animate.css/animate.min.css'
 
 class App extends Component {
@@ -15,6 +16,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/spotify" component={SpotifyContainer} />
             <Route exact path="/carousel" component={CarouselContainer} />
+            <Route exact path="/auto-complete" component={AutoCompleteContainer} />
             <Redirect from="/" to="spotify" />
           </Switch>
         </main>

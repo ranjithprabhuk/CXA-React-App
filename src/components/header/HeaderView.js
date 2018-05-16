@@ -13,6 +13,7 @@ export const HeaderView = () =>
         </Typography>
         <Button color="inherit" onClick={() => history.push('/spotify')}>Spotify</Button>
         <Button color="inherit" onClick={() => history.push('/carousel')}>Carousel</Button>
+        <Button color="inherit" onClick={() => history.push('/auto-complete')}>Auto Complete</Button>
       </Toolbar>
     </AppBar>
   </div>

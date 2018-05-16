@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Grid, Paper, Card, CardContent, CardMedia, CardActions, IconButton, Typography } from '@material-ui/core';
+import PropTypes from 'prop-types';
+import { Grid, Paper, Card, CardContent, CardMedia, CardActions, IconButton, Typography, FormControl, InputAdornment, InputLabel, Input, CircularProgress } from '@material-ui/core';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import RemoveRedEye from '@material-ui/icons/RemoveRedEye';
 import ShareIcon from '@material-ui/icons/Share';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { constructImageSource } from '../../utils'
+import Search from '@material-ui/icons/Search';
+import { constructImageSource } from '../../utils';
+import { ImageContainer } from '../../components/image-container'
 import './spotify.scss'
 
 class Spotify extends Component {
@@ -15,70 +16,96 @@ class Spotify extends Component {
       pageNo: 1,
       imagesPerPage: 20,
       currentScrollPosition: 0,
+      searchText: '',
     }
 
-    this.handleScroll = this.handleScroll.bind(this);
+    this.handleScroll = this.handleScroll.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.searchImages = this.searchImages.bind(this)
   }
 
   handleScroll(event) {
-    const pos = event.currentTarget.scrollTop - this.state.currentScrollPosition;
+    const pos = event.currentTarget.scrollTop - this.state.currentScrollPosition
 
     if (pos > 250) {
-      this.setState(value => { return { currentScrollPosition: pos, pageNo: ++value.pageNo } });
-      this.props.getImages(this.state.pageNo, this.state.imagesPerPage);
+      this.setState(value => { return { currentScrollPosition: pos, pageNo: ++value.pageNo } })
+      this.props.getImages(this.state.pageNo, this.state.imagesPerPage, this.searchText)
     }
+  }
+
+  handleChange(event) {
+    this.setState({ searchText: event.currentTarget.value })
+  }
+
+  searchImages() {
+    this.setState({ pageNo: 1 });
+    setTimeout(() => {
+      const { pageNo, imagesPerPage, searchText } = this.state
+      this.props.getImages(pageNo, imagesPerPage, searchText)
+      this.setState({ pageNo: 2 });
+    })
   }
 
   componentWillMount() {
     const { images, getImages } = this.props
-    const { pageNo, imagesPerPage } = this.state
+    const { pageNo, imagesPerPage, searchText } = this.state
     if (images && images.length === 0) {
-      getImages(pageNo, imagesPerPage)
-      this.setState(value => { return { pageNo: ++value.pageNo } });
+      getImages(pageNo, imagesPerPage, searchText)
+      this.setState(value => { return { pageNo: ++value.pageNo } })
     }
   }
 
-  updateFavorites(index) {
-    this.props.updateFavorites(index)
-  }
-
-  render() {
+  renderImages() {
     const { images, updateFavorites } = this.props
 
     return (
       <div className="root" onScroll={this.handleScroll}>
+        <ImageContainer images={images} updateFavorites={updateFavorites} />
+      </div>
+    )
+  }
+
+  render() {
+    const { images, updateFavorites, isFetchingImages } = this.props
+
+    return (
+      <div style={{ marginTop: 80 }}>
         <Grid container>
-          {images.map((image, index) =>
-            <Grid item xs={12} sm={4} md={3}>
-              <Card className="card">
-                <CardMedia
-                  className="media"
-                  image={constructImageSource(image)}
-                  title={image.title}
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="headline" component="h5">
-                    {image.title.length > 10 ? image.title.slice(0, 10) + '...' : image.title}
-                  </Typography>
-                </CardContent>
-                <CardActions className="card-actions">
-                  <IconButton aria-label="Add to favorites" onClick={() => updateFavorites(index)}>
-                    <FavoriteIcon color={image.isfamily ? 'secondary' : 'default'} />
-                  </IconButton>
-                  <IconButton aria-label="Share">
-                    <ShareIcon />
-                  </IconButton>
-                  <IconButton aria-label="View Image">
-                    <RemoveRedEye />
-                  </IconButton>
-                </CardActions>
-              </Card>
-            </Grid>
-          )}
+          <Grid item xs={12} sm={10} md={8}>
+            <FormControl fullWidth>
+              <InputLabel htmlFor="Search">Search</InputLabel>
+              <Input
+                id='search'
+                type='text'
+                value={this.state.searchText}
+                onChange={(e) => this.handleChange(e)}
+                disabled={this.props.isFetchingImages}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="Search"
+                      onClick={this.searchImages}
+                    >
+                      {<Search />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+              />
+            </FormControl>
+          </Grid>
         </Grid>
+        {isFetchingImages ? <CircularProgress color="secondary" /> : this.renderImages()}
+
       </div>
     );
   }
 }
 
+Spotify.propTypes = {
+  isFetchingImages: PropTypes.bool.isRequired,
+  images: PropTypes.array.isRequired,
+};
+
 export default Spotify;
+
+

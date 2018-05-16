@@ -8,11 +8,15 @@ const defaultState = {
 const spotifyReducer = (state = defaultState, action) => {
     switch (action.type) {
         case types.toggleLoader: {
+            console.log('action', action)
             return {...state, isFetchingImages: !state.isFetchingImages}
         }
         case types.setImages: {
             const images = state.images.concat(action.images)
             return {...state, images}
+        }
+        case types.resetImages: {
+            return {...state, images: []}
         }
         case types.updateFavorites: {
             const images = state.images.map((image, index) => index === action.index ? {...image, isfamily: !image.isfamily}: image);
